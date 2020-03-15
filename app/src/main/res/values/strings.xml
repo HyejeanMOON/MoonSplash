@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WallPaperByUnsplash</string>
+
+    <!-- HomeActivity-->
+    <string name="tab_photos">Photos</string>
+    <string name="tab_collections">Collections</string>
 </resources>

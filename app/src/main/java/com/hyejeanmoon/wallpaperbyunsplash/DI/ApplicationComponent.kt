@@ -2,7 +2,7 @@ package com.hyejeanmoon.wallpaperbyunsplash.DI
 
 import android.app.Application
 import com.hyejeanmoon.AndroidApplication
-import com.hyejeanmoon.wallpaperbyunsplash.presentation.scenes.MainActivityModule
+import com.hyejeanmoon.wallpaperbyunsplash.presentation.scenes.HomeActivityModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -15,7 +15,7 @@ import javax.inject.Singleton
     modules = [
         AndroidInjectionModule::class,
         AndroidSupportInjectionModule::class,
-        MainActivityModule.Builder::class,
+        HomeActivityModule.Builder::class,
         ApiModule::class
     ]
 )
