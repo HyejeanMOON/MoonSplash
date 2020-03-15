@@ -4,4 +4,10 @@
     <!-- HomeActivity-->
     <string name="tab_photos">Photos</string>
     <string name="tab_collections">Collections</string>
+
+
+    <!-- Menu-->
+    <string name="menu_latest">Latest</string>
+    <string name="menu_oldest">Oldest</string>
+    <string name="menu_popular">Popular</string>
 </resources>

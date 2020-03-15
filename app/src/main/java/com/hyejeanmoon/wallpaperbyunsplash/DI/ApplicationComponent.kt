@@ -2,7 +2,7 @@ package com.hyejeanmoon.wallpaperbyunsplash.DI
 
 import android.app.Application
 import com.hyejeanmoon.AndroidApplication
-import com.hyejeanmoon.wallpaperbyunsplash.presentation.scenes.HomeActivityModule
+import com.hyejeanmoon.wallpaperbyunsplash.presentation.scenes.home.HomeActivityModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
