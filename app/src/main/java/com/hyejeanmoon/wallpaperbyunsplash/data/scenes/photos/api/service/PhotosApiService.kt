@@ -11,7 +11,7 @@ import retrofit2.http.Query
  *
  * It's a service of Retrofit .
  */
-interface PhotosService {
+interface PhotosApiService {
 
     /**
      * get a photo from server by id.
