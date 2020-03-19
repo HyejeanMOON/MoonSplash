@@ -1,9 +1,10 @@
-package com.hyejeanmoon.wallpaperbyunsplash.data.scenes.photos.api.photo
+package com.hyejeanmoon.wallpaperbyunsplash.data.scenes.photos.api.entity
 
 import com.google.gson.annotations.SerializedName
-import com.hyejeanmoon.wallpaperbyunsplash.domain.scenes.photos.entity.Downloads
+import com.hyejeanmoon.wallpaperbyunsplash.domain.scenes.photos.entity.Views
 
-class DownloadsItem : Downloads {
+class ViewsItem : Views {
+
     @SerializedName("total")
     override val total: Int? = null
 

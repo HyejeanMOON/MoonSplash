@@ -1,4 +1,4 @@
-package com.hyejeanmoon.wallpaperbyunsplash.data.scenes.photos.api.photo
+package com.hyejeanmoon.wallpaperbyunsplash.data.scenes.photos.api.entity
 
 import com.google.gson.annotations.SerializedName
 import com.hyejeanmoon.wallpaperbyunsplash.domain.scenes.photos.entity.User
@@ -16,7 +16,7 @@ class UserItem : User {
 
     @SerializedName("name")
     override val name: String? = null
-    
+
     @SerializedName("portfolio_url")
     override val portfolioUrl: String? = null
 

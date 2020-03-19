@@ -1,4 +1,4 @@
-package com.hyejeanmoon.wallpaperbyunsplash.data.scenes.photos.api.photo
+package com.hyejeanmoon.wallpaperbyunsplash.data.scenes.photos.api.entity
 
 import com.google.gson.annotations.SerializedName
 import com.hyejeanmoon.wallpaperbyunsplash.domain.scenes.photos.entity.Location
@@ -13,5 +13,5 @@ class LocationItem : Location {
 
     @SerializedName("position")
     override val position: PositionItem? = null
-    
+
 }
