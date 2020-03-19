@@ -5,7 +5,7 @@ import javax.inject.Singleton
 /**
  * ApiClientHelper
  *
- * It's help to create ApiService of Retrofit by Dagger
+ * It's help to create a ApiService of Retrofit by Dagger
  */
 @Singleton
 class ApiClientHelper constructor(

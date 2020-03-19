@@ -7,6 +7,6 @@ package com.hyejeanmoon.wallpaperbyunsplash.utils
  */
 class EnvParameters {
     companion object {
-        const val BASE_URL = ""
+        const val BASE_URL = "https://unsplash.com/api"
     }
 }
