@@ -1,8 +1,8 @@
 package com.hyejeanmoon.wallpaperbyunsplash.data.scenes.photos.api.service
 
 
-import com.hyejeanmoon.wallpaperbyunsplash.domain.scenes.photos.entity.Collections
-import com.hyejeanmoon.wallpaperbyunsplash.domain.scenes.photos.entity.Photo
+import com.hyejeanmoon.wallpaperbyunsplash.data.scenes.photos.api.entity.CollectionsItem
+import com.hyejeanmoon.wallpaperbyunsplash.data.scenes.photos.api.entity.PhotoItem
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -19,7 +19,7 @@ interface PhotosApiService {
      * get a photo from server by id.
      */
     @GET("/photos/{id}")
-    fun getPhoto(@Path("id") id: String): Call<Photo>
+    fun getPhoto(@Path("id") id: String): Call<PhotoItem>
 
     /**
      * get a list of photos from server.
@@ -29,7 +29,7 @@ interface PhotosApiService {
         @Query("page") page: Int,
         @Query("per_page") perPage: Int,
         @Query("order_by") orderBy: String
-    ): Call<List<Photo>>
+    ): Call<List<PhotoItem>>
 
     /**
      * get a photo from server by random.
@@ -50,13 +50,13 @@ interface PhotosApiService {
         @Query("query") query: String,
         @Query("orientation") orientation: String,
         @Query("count") count: String
-    ): Call<List<Photo>>
+    ): Call<List<PhotoItem>>
 
     /**
      * get a photo from server by random, without any parameters.
      */
     @GET("/photos/random")
-    fun getRandomPhoto(): Call<Photo>
+    fun getRandomPhoto(): Call<PhotoItem>
 
     /**
      * get a list of photo collections curated.
@@ -66,7 +66,10 @@ interface PhotosApiService {
      * per_page: optional, default 10;
      */
     @GET("/collections/curated")
-    fun getCollections(@Query("page") page: Int, @Query("per_page") perPage: Int): List<Collections>
+    fun getCollections(
+        @Query("page") page: Int,
+        @Query("per_page") perPage: Int
+    ): List<CollectionsItem>
 
     /**
      * get a photo collection.
@@ -81,5 +84,5 @@ interface PhotosApiService {
         @Path("id") id: String,
         @Query("page") page: Int,
         @Query("per_page") perPage: Int
-    ): Collections
+    ): CollectionsItem
 }

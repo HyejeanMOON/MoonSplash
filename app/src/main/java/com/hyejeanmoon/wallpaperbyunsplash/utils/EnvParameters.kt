@@ -7,7 +7,7 @@ package com.hyejeanmoon.wallpaperbyunsplash.utils
  */
 class EnvParameters {
     companion object {
-        const val BASE_URL = "https://unsplash.com/api"
-        const val CLIENT_ID = "fa60305aa82e74134cabc7093ef54c8e2c370c47e73152f72371c828daedfcd7"
+        const val BASE_URL = "https://api.unsplash.com"
+        const val CLIENT_ID = "hVAykcWQEgJZ0hH24m3R-T03gk_hxUYfoU-5sGwoJZ0"
     }
 }
