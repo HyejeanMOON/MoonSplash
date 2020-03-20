@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WallPaperByUnsplash</string>
+    <string name="app_name">MoonSplash</string>
 
     <!-- HomeActivity-->
     <string name="tab_photos">Photos</string>
