@@ -10,7 +10,6 @@ import com.hyejeanmoon.wallpaperbyunsplash.R
 import com.hyejeanmoon.wallpaperbyunsplash.databinding.ActivityHomeBinding
 import com.hyejeanmoon.wallpaperbyunsplash.presentation.BaseActivity
 import com.hyejeanmoon.wallpaperbyunsplash.presentation.scenes.home.adapter.HomeFragmentPagerAdapter
-import com.hyejeanmoon.wallpaperbyunsplash.presentation.scenes.home.photos.PhotosFragment
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -28,7 +27,10 @@ class HomeActivity : BaseActivity() {
         setStatusBarColor(R.color.colorPrimary, true)
 
         binding.viewpager.adapter = HomeFragmentPagerAdapter(
-            fragment = arrayListOf(PhotosFragment(), PhotosFragment()),
+            fragment = arrayListOf(
+                PhotosFragment(),
+                PhotosFragment()
+            ),
             fragmentManager = supportFragmentManager
         )
 
