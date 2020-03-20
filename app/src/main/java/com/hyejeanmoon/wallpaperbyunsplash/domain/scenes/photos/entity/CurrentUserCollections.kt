@@ -6,5 +6,5 @@ interface CurrentUserCollections {
     val publishedAt: String?
     val curated: Boolean?
     val coverPhoto: String?
-    val user: User?
+    val user: String?
 }
