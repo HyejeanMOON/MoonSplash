@@ -1,7 +1,9 @@
 package com.hyejeanmoon.wallpaperbyunsplash.data.scenes.photos.api.service
 
+
 import com.hyejeanmoon.wallpaperbyunsplash.domain.scenes.photos.entity.Collections
 import com.hyejeanmoon.wallpaperbyunsplash.domain.scenes.photos.entity.Photo
+import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -17,7 +19,7 @@ interface PhotosApiService {
      * get a photo from server by id.
      */
     @GET("/photos/{id}")
-    fun getPhoto(@Path("id") id: String): Photo
+    fun getPhoto(@Path("id") id: String): Call<Photo>
 
     /**
      * get a list of photos from server.
@@ -27,7 +29,7 @@ interface PhotosApiService {
         @Query("page") page: Int,
         @Query("per_page") perPage: Int,
         @Query("order_by") orderBy: String
-    ): List<Photo>
+    ): Call<List<Photo>>
 
     /**
      * get a photo from server by random.
@@ -41,20 +43,20 @@ interface PhotosApiService {
      * count: The number of photos to return. (Default: 1; max: 30)
      */
     @GET("/photos/random")
-    fun getRandomPhoto(
+    fun getRandomPhotos(
         @Query("collections") collections: String,
         @Query("featured") featured: String,
         @Query("username") username: String,
         @Query("query") query: String,
         @Query("orientation") orientation: String,
         @Query("count") count: String
-    ): List<Photo>
+    ): Call<List<Photo>>
 
     /**
      * get a photo from server by random, without any parameters.
      */
     @GET("/photos/random")
-    fun getRandomPhoto(): Photo
+    fun getRandomPhoto(): Call<Photo>
 
     /**
      * get a list of photo collections curated.

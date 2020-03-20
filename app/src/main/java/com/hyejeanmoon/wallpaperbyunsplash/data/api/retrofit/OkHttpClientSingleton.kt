@@ -20,7 +20,7 @@ class OkHttpClientSingleton {
         okHttpClient = okHttpBuilder.build()
     }
 
-    val plainOkhttpClient: OkHttpClient
+    val plainOkHttpClient: OkHttpClient
         get() = okHttpClient.newBuilder()
             .addInterceptor(ApiInterceptor(EnvParameters.CLIENT_ID)).build()
 
