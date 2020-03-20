@@ -1,6 +1,6 @@
 package com.hyejeanmoon.wallpaperbyunsplash.data.api.retrofit
 
-import android.util.Log
+import com.hyejeanmoon.wallpaperbyunsplash.utils.LogUtils
 import okhttp3.Interceptor
 import okhttp3.Response
 
@@ -16,7 +16,7 @@ class ApiInterceptor(private val clientId: String) : Interceptor {
             .addHeader("Authorization", "Client-ID $clientId")
             .build()
 
-        Log.d("$TAG RequestBody: ", request.body().toString())
+        LogUtils.outputLog("$TAG RequestBody: ", request.body().toString())
 
         return chain.proceed(request)
     }

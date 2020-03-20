@@ -2,6 +2,11 @@ package com.hyejeanmoon.wallpaperbyunsplash.utils
 
 import timber.log.Timber
 
+/**
+ * LogUtils
+ *
+ * It's a log utility.
+ */
 object LogUtils {
 
     init {

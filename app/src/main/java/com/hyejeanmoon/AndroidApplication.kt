@@ -7,7 +7,7 @@ import dagger.android.DaggerApplication
 /**
  * AndroidApplication
  *
- * It's a custom Application.
+ * It's a custom Application class.
  */
 class AndroidApplication : DaggerApplication() {
 

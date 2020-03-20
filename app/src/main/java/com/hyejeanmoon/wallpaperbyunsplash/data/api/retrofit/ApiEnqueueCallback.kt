@@ -5,6 +5,11 @@ import com.hyejeanmoon.wallpaperbyunsplash.utils.MoonException
 import retrofit2.Call
 import retrofit2.Response
 
+/**
+ * ApiEnqueueCallback
+ *
+ * It's a callback for retrofit. the effect of this class is catch exception and output log.
+ */
 class ApiEnqueueCallback<T>(
     private val onSuccess: ((response: T) -> Unit),
     private val onError: ((Exception) -> Unit),

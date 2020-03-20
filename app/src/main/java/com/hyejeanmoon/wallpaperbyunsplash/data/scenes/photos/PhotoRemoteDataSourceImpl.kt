@@ -9,6 +9,11 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
+/**
+ * PhotosRemoteDateSourceImpl
+ *
+ * It's implementation of Photos' remote data source.
+ */
 @Singleton
 class PhotoRemoteDataSourceImpl(
     private val photosApiService: PhotosApiService

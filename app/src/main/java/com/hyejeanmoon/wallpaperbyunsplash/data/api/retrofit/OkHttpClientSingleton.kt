@@ -5,6 +5,11 @@ import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+/**
+ * OkHttpClientSingleton
+ *
+ * It's a okHttpClient of retrofit.
+ */
 @Singleton
 class OkHttpClientSingleton {
     private var okHttpClient: OkHttpClient

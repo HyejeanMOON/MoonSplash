@@ -4,6 +4,11 @@ import com.hyejeanmoon.wallpaperbyunsplash.domain.scenes.photos.PhotosModel
 import com.hyejeanmoon.wallpaperbyunsplash.domain.scenes.photos.datasource.PhotoRemoteDataSource
 import com.hyejeanmoon.wallpaperbyunsplash.domain.scenes.photos.entity.Photo
 
+/**
+ * PhotosModelImpl
+ *
+ * It's implementation of photos model.
+ */
 class PhotosModelImpl(
     private val photoRemoteDataSource: PhotoRemoteDataSource
 ) : PhotosModel {

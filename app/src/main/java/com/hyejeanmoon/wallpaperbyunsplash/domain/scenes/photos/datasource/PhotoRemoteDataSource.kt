@@ -5,7 +5,7 @@ import com.hyejeanmoon.wallpaperbyunsplash.domain.scenes.photos.entity.Photo
 /**
  * PhotoRemoteDataSource
  *
- * It's a photo of remote data source interface.
+ * It's interface of photos' remote data source.
  */
 interface PhotoRemoteDataSource {
 

@@ -1,5 +1,10 @@
 package com.hyejeanmoon.wallpaperbyunsplash.utils
 
+/**
+ * MoonException
+ *
+ * It's a custom exception that inherit from Exception.
+ */
 class MoonException(
     cause: Throwable? = null,
     message: String? = null

@@ -18,7 +18,7 @@ import javax.inject.Singleton
  * ApiModule
  *
  * It's a Module of Dagger.
- * ApplicationModule will provide a instance of class automatically by dagger.
+ * The effect of ApplicationModule will provide a instance of class automatically by dagger.
  */
 @Module
 class ApplicationModule {
