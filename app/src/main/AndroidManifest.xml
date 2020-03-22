@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hyejeanmoon.wallpaperbyunsplash"
+    package="com.hyejeanmoon.moonunsplash"
     xmlns:tools="http://schemas.android.com/tools">
 
 
@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".presentation.scenes.home.HomeActivity">
+        <activity android:name="com.hyejeanmoon.moonunsplash.presentation.scenes.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".presentation.BaseActivity" />
+        <activity android:name="com.hyejeanmoon.moonunsplash.presentation.BaseActivity" />
     </application>
 
 </manifest>

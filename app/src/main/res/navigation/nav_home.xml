@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/photosFragment"
-        android:name="com.hyejeanmoon.wallpaperbyunsplash.presentation.scenes.home.PhotosFragment"
+        android:name="com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos.PopularPhotosFragment"
         android:label="photosFragment"
         tools:layout="@layout/fragment_photos" />
 
