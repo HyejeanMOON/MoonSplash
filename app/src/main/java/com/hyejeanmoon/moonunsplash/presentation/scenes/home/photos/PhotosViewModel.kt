@@ -19,7 +19,9 @@ import kotlin.coroutines.CoroutineContext
  * It's a ViewModel of PopularPhotosFragment and LatestPhotosFragment.
  */
 class PhotosViewModel(
-    private val photosModel: PhotosModel
+    private val photosModel: PhotosModel,
+    private val popularPhotosDataSourceFactory: PopularPhotosDataSourceFactory,
+    private val latestPhotosDataSourceFactory: LatestPhotosDataSourceFactory
 ) : ViewModel(), CoroutineScope {
 
     override val coroutineContext: CoroutineContext
@@ -27,9 +29,7 @@ class PhotosViewModel(
 
     fun getPhotoWithPopular(): LiveData<PagedList<Photo>> {
         return LivePagedListBuilder(
-            PhotosDataSourceFactory(
-                photosModel, PhotosDataSource.MODE_PHOTO_LIST_POPULAR
-            ),
+            popularPhotosDataSourceFactory,
             PagedList.Config.Builder().setPageSize(5).setMaxSize(15).setEnablePlaceholders(true)
                 .build()
         ).build()
@@ -37,22 +37,24 @@ class PhotosViewModel(
 
     fun getPhotoWithLatest(): LiveData<PagedList<Photo>> {
         return LivePagedListBuilder(
-            PhotosDataSourceFactory(
-                photosModel, PhotosDataSource.MODE_PHOTO_LIST_LATEST
-            ),
+            latestPhotosDataSourceFactory,
             PagedList.Config.Builder().setPageSize(5).setMaxSize(15).setEnablePlaceholders(true)
                 .build()
         ).build()
     }
 
     class Factory @Inject constructor(
-        private val photosModel: PhotosModel
+        private val photosModel: PhotosModel,
+        private val popularPhotosDataSourceFactory: PopularPhotosDataSourceFactory,
+        private val latestPhotosDataSourceFactory: LatestPhotosDataSourceFactory
     ) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass == PhotosViewModel::class.java) {
                 return PhotosViewModel(
-                    photosModel
+                    photosModel,
+                    popularPhotosDataSourceFactory,
+                    latestPhotosDataSourceFactory
                 ) as T
             }
             val className = modelClass.name

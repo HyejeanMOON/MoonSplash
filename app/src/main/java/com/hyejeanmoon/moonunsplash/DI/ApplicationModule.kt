@@ -9,6 +9,9 @@ import com.hyejeanmoon.moonunsplash.data.scenes.photos.api.service.PhotosApiServ
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.PhotosModel
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.datasource.PhotoRemoteDataSource
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.model.PhotosModelImpl
+import com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos.LatestPhotosDataSourceFactory
+import com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos.PhotosDataSource
+import com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos.PopularPhotosDataSourceFactory
 import com.hyejeanmoon.moonunsplash.utils.EnvParameters
 import dagger.Module
 import dagger.Provides
@@ -67,5 +70,21 @@ class ApplicationModule {
         photoRemoteDataSource: PhotoRemoteDataSource
     ): PhotosModel {
         return PhotosModelImpl(photoRemoteDataSource)
+    }
+
+    @Provides
+    @Singleton
+    internal fun providePopularPhotoDataSourceFactory(
+        photosModel: PhotosModel
+    ): PopularPhotosDataSourceFactory {
+        return PopularPhotosDataSourceFactory(photosModel, PhotosDataSource.MODE_PHOTO_LIST_POPULAR)
+    }
+
+    @Provides
+    @Singleton
+    internal fun provideLatestPhotoDataSourceFactory(
+        photosModel: PhotosModel
+    ): LatestPhotosDataSourceFactory {
+        return LatestPhotosDataSourceFactory(photosModel, PhotosDataSource.MODE_PHOTO_LIST_LATEST)
     }
 }
