@@ -1,15 +1,15 @@
 package com.hyejeanmoon.wallpaperbyunsplash.presentation.scenes.home
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import com.hyejeanmoon.wallpaperbyunsplash.domain.scenes.photos.PhotosModel
 import com.hyejeanmoon.wallpaperbyunsplash.domain.scenes.photos.entity.Photo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
@@ -17,16 +17,17 @@ class PhotosViewModel(
     private val photosModel: PhotosModel
 ) : ViewModel(), CoroutineScope {
 
-    private val _photo = MutableLiveData<Photo>()
-    val photo: LiveData<Photo> get() = _photo
-
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + Job()
 
-    fun getPhotoWithRandom() {
-        launch {
-            _photo.value = photosModel.getPhotoWithRandom()
-        }
+    fun getPhotoWithPopular(): LiveData<PagedList<Photo>> {
+        return LivePagedListBuilder(
+            PhotosDataSourceFactory(
+                photosModel, PhotosDataSource.MODE_PHOTO_LIST_LATEST
+            ),
+            PagedList.Config.Builder().setPageSize(5).setMaxSize(15).setEnablePlaceholders(true)
+                .build()
+        ).build()
     }
 
     class Factory @Inject constructor(

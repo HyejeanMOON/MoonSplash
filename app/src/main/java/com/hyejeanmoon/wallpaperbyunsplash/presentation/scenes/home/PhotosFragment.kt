@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.bumptech.glide.Glide
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.hyejeanmoon.wallpaperbyunsplash.R
 import com.hyejeanmoon.wallpaperbyunsplash.databinding.FragmentPhotosBinding
 import com.hyejeanmoon.wallpaperbyunsplash.presentation.BaseFragment
+import com.hyejeanmoon.wallpaperbyunsplash.presentation.scenes.home.adapter.PhotosRecyclerViewAdapter
 import javax.inject.Inject
 
 class PhotosFragment : BaseFragment() {
@@ -24,6 +25,8 @@ class PhotosFragment : BaseFragment() {
             .get(PhotosViewModel::class.java)
     }
 
+    private lateinit var adapter: PhotosRecyclerViewAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,7 +34,13 @@ class PhotosFragment : BaseFragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_photos, container, false)
 
-        viewModel.getPhotoWithRandom()
+        adapter = PhotosRecyclerViewAdapter()
+
+        binding.rercyclerView.adapter = adapter
+        binding.rercyclerView.layoutManager = LinearLayoutManager(context)
+
+        viewModel.getPhotoWithPopular()
+
         return binding.root
 
     }
@@ -39,11 +48,13 @@ class PhotosFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel.photo.observe(viewLifecycleOwner, Observer { photo ->
-            if (photo.urls != null) {
-                Glide.with(this).load(photo.urls!!.regular).into(binding.img)
-            }
+        observeViewModel()
 
+    }
+
+    private fun observeViewModel() {
+        viewModel.getPhotoWithPopular().observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it)
         })
     }
 

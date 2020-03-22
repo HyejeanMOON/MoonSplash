@@ -16,12 +16,8 @@ class ApiInterceptor(private val clientId: String) : Interceptor {
             .addHeader("Authorization", "Client-ID $clientId")
             .build()
 
-        LogUtils.outputLog("$TAG RequestBody: ", request.body().toString())
+        LogUtils.outputLog(request.toString())
 
         return chain.proceed(request)
-    }
-
-    companion object {
-        const val TAG = "ApiInterceptor"
     }
 }
