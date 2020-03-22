@@ -9,6 +9,11 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
+/**
+ * PhotosDataSource
+ *
+ * The effect of Paging's DataSource is help recycler to get more data smoothly and seamlessly.
+ */
 class PhotosDataSource(
     private val model: PhotosModel,
     private val mode: String
@@ -22,7 +27,7 @@ class PhotosDataSource(
         params: LoadInitialParams<Int>,
         callback: LoadInitialCallback<Int, Photo>
     ) {
-        // Because of the number of photos is 3 times [per_page] when first time is loaded. So, we will set next page is 4, not 2.
+        // Because of the numbers of photo are 3 times [per_page] when first time is loaded. So, we would set next page is 4, not 2.
         when (mode) {
             MODE_PHOTO_LIST_LATEST -> {
                 launch {

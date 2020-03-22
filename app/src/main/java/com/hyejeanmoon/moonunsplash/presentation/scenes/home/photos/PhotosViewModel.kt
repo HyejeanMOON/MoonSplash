@@ -13,6 +13,11 @@ import kotlinx.coroutines.Job
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
+/**
+ * PhotosViewModel
+ *
+ * It's a ViewModel of PopularPhotosFragment and LatestPhotosFragment.
+ */
 class PhotosViewModel(
     private val photosModel: PhotosModel
 ) : ViewModel(), CoroutineScope {

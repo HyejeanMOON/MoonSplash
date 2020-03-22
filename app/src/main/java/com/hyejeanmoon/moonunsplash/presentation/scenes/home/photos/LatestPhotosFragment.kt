@@ -14,6 +14,11 @@ import com.hyejeanmoon.moonunsplash.presentation.BaseFragment
 import com.hyejeanmoon.moonunsplash.presentation.scenes.home.adapter.PhotosRecyclerViewAdapter
 import javax.inject.Inject
 
+/**
+ * LatestPhotosFragment
+ *
+ * The fragment belong to HomeActivity,
+ */
 class LatestPhotosFragment : BaseFragment() {
 
     lateinit var binding: FragmentPhotosBinding
