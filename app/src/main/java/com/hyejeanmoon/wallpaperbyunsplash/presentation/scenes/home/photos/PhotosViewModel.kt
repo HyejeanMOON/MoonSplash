@@ -1,4 +1,4 @@
-package com.hyejeanmoon.wallpaperbyunsplash.presentation.scenes.home
+package com.hyejeanmoon.wallpaperbyunsplash.presentation.scenes.home.photos
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -21,6 +21,16 @@ class PhotosViewModel(
         get() = Dispatchers.Main + Job()
 
     fun getPhotoWithPopular(): LiveData<PagedList<Photo>> {
+        return LivePagedListBuilder(
+            PhotosDataSourceFactory(
+                photosModel, PhotosDataSource.MODE_PHOTO_LIST_POPULAR
+            ),
+            PagedList.Config.Builder().setPageSize(5).setMaxSize(15).setEnablePlaceholders(true)
+                .build()
+        ).build()
+    }
+
+    fun getPhotoWithLatest(): LiveData<PagedList<Photo>> {
         return LivePagedListBuilder(
             PhotosDataSourceFactory(
                 photosModel, PhotosDataSource.MODE_PHOTO_LIST_LATEST

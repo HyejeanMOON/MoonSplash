@@ -10,6 +10,8 @@ import com.hyejeanmoon.wallpaperbyunsplash.R
 import com.hyejeanmoon.wallpaperbyunsplash.databinding.ActivityHomeBinding
 import com.hyejeanmoon.wallpaperbyunsplash.presentation.BaseActivity
 import com.hyejeanmoon.wallpaperbyunsplash.presentation.scenes.home.adapter.HomeFragmentPagerAdapter
+import com.hyejeanmoon.wallpaperbyunsplash.presentation.scenes.home.photos.LatestPhotosFragment
+import com.hyejeanmoon.wallpaperbyunsplash.presentation.scenes.home.photos.PopularPhotosFragment
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -28,8 +30,8 @@ class HomeActivity : BaseActivity() {
 
         binding.viewpager.adapter = HomeFragmentPagerAdapter(
             fragment = arrayListOf(
-                PhotosFragment(),
-                PhotosFragment()
+                PopularPhotosFragment(),
+                LatestPhotosFragment()
             ),
             fragmentManager = supportFragmentManager
         )
@@ -42,20 +44,14 @@ class HomeActivity : BaseActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.photo_order_menu, menu)
+        menuInflater.inflate(R.menu.menu_search, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.latest -> {
-
-            }
-            R.id.oldest -> {
-
-            }
-            R.id.popular -> {
-
+            R.id.menu_search -> {
+                
             }
         }
 
@@ -70,7 +66,10 @@ abstract class HomeActivityModule {
     abstract fun provideActivity(activity: HomeActivity): FragmentActivity
 
     @ContributesAndroidInjector
-    abstract fun contributePhotosFragment(): PhotosFragment
+    abstract fun contributePopularPhotosFragment(): PopularPhotosFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeLatestPhotosFragment(): LatestPhotosFragment
 
     @Module
     abstract class Builder {

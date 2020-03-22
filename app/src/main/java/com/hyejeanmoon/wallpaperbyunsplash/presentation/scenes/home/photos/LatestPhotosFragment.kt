@@ -1,4 +1,4 @@
-package com.hyejeanmoon.wallpaperbyunsplash.presentation.scenes.home
+package com.hyejeanmoon.wallpaperbyunsplash.presentation.scenes.home.photos
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,7 +14,7 @@ import com.hyejeanmoon.wallpaperbyunsplash.presentation.BaseFragment
 import com.hyejeanmoon.wallpaperbyunsplash.presentation.scenes.home.adapter.PhotosRecyclerViewAdapter
 import javax.inject.Inject
 
-class PhotosFragment : BaseFragment() {
+class LatestPhotosFragment : BaseFragment() {
 
     lateinit var binding: FragmentPhotosBinding
 
@@ -39,7 +39,7 @@ class PhotosFragment : BaseFragment() {
         binding.rercyclerView.adapter = adapter
         binding.rercyclerView.layoutManager = LinearLayoutManager(context)
 
-        viewModel.getPhotoWithPopular()
+        viewModel.getPhotoWithLatest()
 
         return binding.root
 
@@ -53,7 +53,7 @@ class PhotosFragment : BaseFragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.getPhotoWithPopular().observe(viewLifecycleOwner, Observer {
+        viewModel.getPhotoWithLatest().observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
         })
     }

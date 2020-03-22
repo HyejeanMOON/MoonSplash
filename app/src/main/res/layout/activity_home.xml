@@ -35,14 +35,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/tab_photos" />
+                    android:text="@string/tab_popular_photos" />
 
                 <com.google.android.material.tabs.TabItem
                     android:id="@+id/tab2"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/tab_collections" />
+                    android:text="@string/tab_latest_photos" />
 
             </com.google.android.material.tabs.TabLayout>
 

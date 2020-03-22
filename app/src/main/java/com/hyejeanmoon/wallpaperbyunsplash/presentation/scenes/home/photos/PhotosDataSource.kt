@@ -1,4 +1,4 @@
-package com.hyejeanmoon.wallpaperbyunsplash.presentation.scenes.home
+package com.hyejeanmoon.wallpaperbyunsplash.presentation.scenes.home.photos
 
 import androidx.paging.PageKeyedDataSource
 import com.hyejeanmoon.wallpaperbyunsplash.domain.scenes.photos.PhotosModel

@@ -1,4 +1,4 @@
-package com.hyejeanmoon.wallpaperbyunsplash.presentation.scenes.home
+package com.hyejeanmoon.wallpaperbyunsplash.presentation.scenes.home.photos
 
 import androidx.paging.DataSource
 import com.hyejeanmoon.wallpaperbyunsplash.domain.scenes.photos.PhotosModel
@@ -8,6 +8,9 @@ class PhotosDataSourceFactory(private val model: PhotosModel, private val mode: 
     DataSource.Factory<Int, Photo>() {
 
     override fun create(): DataSource<Int, Photo> {
-        return PhotosDataSource(model, mode)
+        return PhotosDataSource(
+            model,
+            mode
+        )
     }
 }
