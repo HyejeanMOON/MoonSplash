@@ -7,10 +7,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.tabs.TabLayout
 import com.hyejeanmoon.moonunsplash.R
+import com.hyejeanmoon.moonunsplash.data.scenes.photos.LatestPhotosFragment
 import com.hyejeanmoon.moonunsplash.databinding.ActivityHomeBinding
 import com.hyejeanmoon.moonunsplash.presentation.BaseActivity
 import com.hyejeanmoon.moonunsplash.presentation.scenes.home.adapter.HomeFragmentPagerAdapter
-import com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos.LatestPhotosFragment
 import com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos.PopularPhotosFragment
 import dagger.Binds
 import dagger.Module

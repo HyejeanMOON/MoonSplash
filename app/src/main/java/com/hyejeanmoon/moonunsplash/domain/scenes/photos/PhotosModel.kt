@@ -1,5 +1,7 @@
 package com.hyejeanmoon.moonunsplash.domain.scenes.photos
 
+import androidx.lifecycle.LiveData
+import androidx.paging.PagedList
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity.Photo
 
 /**
@@ -17,17 +19,17 @@ interface PhotosModel {
     /**
      * get a list of photos from server with popular order.
      */
-    suspend fun getPhotosWithPopular(page: Int, perPage: Int): List<Photo>
+    fun getPhotosWithPopular(): LiveData<PagedList<Photo>>
 
     /**
      * get a list of photos from server with latest order.
      */
-    suspend fun getPhotosWithLatest(page: Int, perPage: Int): List<Photo>
+    fun getPhotosWithLatest(): LiveData<PagedList<Photo>>
 
     /**
      * get a list oof photos from server with oldest order.
      */
-    suspend fun getPhotosWithOldest(page: Int, perPage: Int): List<Photo>
+    suspend fun getPhotosWithOldest(): LiveData<PagedList<Photo>>
 
     /**
      * get a photo with random without any parameters.

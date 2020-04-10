@@ -1,7 +1,7 @@
-package com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos
+package com.hyejeanmoon.moonunsplash.data.scenes.photos
 
 import androidx.paging.PageKeyedDataSource
-import com.hyejeanmoon.moonunsplash.domain.scenes.photos.PhotosModel
+import com.hyejeanmoon.moonunsplash.domain.scenes.photos.datasource.PhotoRemoteDataSource
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity.Photo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +15,7 @@ import kotlin.coroutines.CoroutineContext
  * The effect of Paging's DataSource is help recycler to get more data smoothly and seamlessly.
  */
 class PhotosDataSource(
-    private val model: PhotosModel,
+    private val photoRemoteDataSource: PhotoRemoteDataSource,
     private val mode: String
 ) :
     PageKeyedDataSource<Int, Photo>(), CoroutineScope {
@@ -32,7 +32,7 @@ class PhotosDataSource(
             MODE_PHOTO_LIST_LATEST -> {
                 launch {
                     callback.onResult(
-                        model.getPhotosWithLatest(1, params.requestedLoadSize),
+                        photoRemoteDataSource.getPhotos(1, params.requestedLoadSize, ORDER_LATEST),
                         null,
                         4
                     )
@@ -41,7 +41,7 @@ class PhotosDataSource(
             MODE_PHOTO_LIST_OLDEST -> {
                 launch {
                     callback.onResult(
-                        model.getPhotosWithOldest(1, params.requestedLoadSize),
+                        photoRemoteDataSource.getPhotos(1, params.requestedLoadSize, ORDER_OLDEST),
                         null,
                         4
                     )
@@ -50,7 +50,7 @@ class PhotosDataSource(
             MODE_PHOTO_LIST_POPULAR -> {
                 launch {
                     callback.onResult(
-                        model.getPhotosWithPopular(1, params.requestedLoadSize),
+                        photoRemoteDataSource.getPhotos(1, params.requestedLoadSize, ORDER_POPULAR),
                         null,
                         4
                     )
@@ -67,9 +67,10 @@ class PhotosDataSource(
             MODE_PHOTO_LIST_LATEST -> {
                 launch {
                     callback.onResult(
-                        model.getPhotosWithLatest(
+                        photoRemoteDataSource.getPhotos(
                             params.key,
-                            params.requestedLoadSize
+                            params.requestedLoadSize,
+                            ORDER_LATEST
                         ), params.key - 1
                     )
                 }
@@ -77,9 +78,10 @@ class PhotosDataSource(
             MODE_PHOTO_LIST_OLDEST -> {
                 launch {
                     callback.onResult(
-                        model.getPhotosWithOldest(
+                        photoRemoteDataSource.getPhotos(
                             params.key,
-                            params.requestedLoadSize
+                            params.requestedLoadSize,
+                            ORDER_OLDEST
                         ), params.key - 1
                     )
                 }
@@ -87,9 +89,10 @@ class PhotosDataSource(
             MODE_PHOTO_LIST_POPULAR -> {
                 launch {
                     callback.onResult(
-                        model.getPhotosWithPopular(
+                        photoRemoteDataSource.getPhotos(
                             params.key,
-                            params.requestedLoadSize
+                            params.requestedLoadSize,
+                            ORDER_POPULAR
                         ), params.key - 1
                     )
                 }
@@ -105,9 +108,10 @@ class PhotosDataSource(
             MODE_PHOTO_LIST_LATEST -> {
                 launch {
                     callback.onResult(
-                        model.getPhotosWithLatest(
+                        photoRemoteDataSource.getPhotos(
                             params.key,
-                            params.requestedLoadSize
+                            params.requestedLoadSize,
+                            ORDER_LATEST
                         ), params.key + 1
                     )
                 }
@@ -115,9 +119,10 @@ class PhotosDataSource(
             MODE_PHOTO_LIST_OLDEST -> {
                 launch {
                     callback.onResult(
-                        model.getPhotosWithOldest(
+                        photoRemoteDataSource.getPhotos(
                             params.key,
-                            params.requestedLoadSize
+                            params.requestedLoadSize,
+                            ORDER_OLDEST
                         ), params.key + 1
                     )
                 }
@@ -125,9 +130,10 @@ class PhotosDataSource(
             MODE_PHOTO_LIST_POPULAR -> {
                 launch {
                     callback.onResult(
-                        model.getPhotosWithPopular(
+                        photoRemoteDataSource.getPhotos(
                             params.key,
-                            params.requestedLoadSize
+                            params.requestedLoadSize,
+                            ORDER_POPULAR
                         ), params.key + 1
                     )
                 }
@@ -143,5 +149,8 @@ class PhotosDataSource(
         const val MODE_PHOTO_LIST_POPULAR = "PHOTO_LIST_POPULAR"
         const val MODE_PHOTO_LIST_OLDEST = "PHOTO_LIST_OLDEST"
         const val MODE_PHOTO_LIST_RANDOM = "PHOTO_LIST_RANDOM"
+        private const val ORDER_POPULAR = "popular"
+        private const val ORDER_OLDEST = "oldest"
+        private const val ORDER_LATEST = "latest"
     }
 }

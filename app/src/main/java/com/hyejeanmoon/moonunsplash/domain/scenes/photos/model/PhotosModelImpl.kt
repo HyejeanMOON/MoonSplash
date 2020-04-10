@@ -1,5 +1,11 @@
 package com.hyejeanmoon.moonunsplash.domain.scenes.photos.model
 
+import androidx.lifecycle.LiveData
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
+import com.hyejeanmoon.moonunsplash.data.scenes.photos.LatestPhotosDataSourceFactory
+import com.hyejeanmoon.moonunsplash.data.scenes.photos.OldestPhotosDataSourceFactory
+import com.hyejeanmoon.moonunsplash.data.scenes.photos.PopularPhotosDataSourceFactory
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.PhotosModel
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.datasource.PhotoRemoteDataSource
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity.Photo
@@ -10,23 +16,38 @@ import com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity.Photo
  * It's implementation of photos model.
  */
 class PhotosModelImpl(
-    private val photoRemoteDataSource: PhotoRemoteDataSource
+    private val photoRemoteDataSource: PhotoRemoteDataSource,
+    private val latestPhotosDataSourceFactory: LatestPhotosDataSourceFactory,
+    private val popularPhotosDataSourceFactory: PopularPhotosDataSourceFactory,
+    private val oldestPhotosDataSourceFactory: OldestPhotosDataSourceFactory
 ) : PhotosModel {
 
     override suspend fun getPhoto(id: String): Photo {
         return photoRemoteDataSource.getPhoto(id)
     }
 
-    override suspend fun getPhotosWithPopular(page: Int, perPage: Int): List<Photo> {
-        return photoRemoteDataSource.getPhotos(page, perPage, ORDER_POPULAR)
+    override fun getPhotosWithPopular(): LiveData<PagedList<Photo>> {
+        return LivePagedListBuilder(
+            popularPhotosDataSourceFactory,
+            PagedList.Config.Builder().setPageSize(5).setMaxSize(15).setEnablePlaceholders(true)
+                .build()
+        ).build()
     }
 
-    override suspend fun getPhotosWithLatest(page: Int, perPage: Int): List<Photo> {
-        return photoRemoteDataSource.getPhotos(page, perPage, ORDER_LATEST)
+    override fun getPhotosWithLatest(): LiveData<PagedList<Photo>> {
+        return LivePagedListBuilder(
+            latestPhotosDataSourceFactory,
+            PagedList.Config.Builder().setPageSize(5).setMaxSize(15).setEnablePlaceholders(true)
+                .build()
+        ).build()
     }
 
-    override suspend fun getPhotosWithOldest(page: Int, perPage: Int): List<Photo> {
-        return photoRemoteDataSource.getPhotos(page, perPage, ORDER_OLDEST)
+    override suspend fun getPhotosWithOldest(): LiveData<PagedList<Photo>> {
+        return LivePagedListBuilder(
+            oldestPhotosDataSourceFactory,
+            PagedList.Config.Builder().setPageSize(5).setMaxSize(15).setEnablePlaceholders(true)
+                .build()
+        ).build()
     }
 
     override suspend fun getPhotoWithRandom(): Photo {
