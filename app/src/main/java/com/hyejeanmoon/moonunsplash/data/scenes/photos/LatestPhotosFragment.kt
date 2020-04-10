@@ -1,4 +1,4 @@
-package com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos
+package com.hyejeanmoon.moonunsplash.data.scenes.photos
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +12,7 @@ import com.hyejeanmoon.moonunsplash.R
 import com.hyejeanmoon.moonunsplash.databinding.FragmentPhotosBinding
 import com.hyejeanmoon.moonunsplash.presentation.BaseFragment
 import com.hyejeanmoon.moonunsplash.presentation.scenes.home.adapter.PhotosRecyclerViewAdapter
+import com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos.PhotosViewModel
 import javax.inject.Inject
 
 /**

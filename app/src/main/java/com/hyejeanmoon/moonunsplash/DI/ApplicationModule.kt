@@ -4,14 +4,11 @@ import android.app.Application
 import android.content.Context
 import com.hyejeanmoon.moonunsplash.data.api.retrofit.ApiClientHelper
 import com.hyejeanmoon.moonunsplash.data.api.retrofit.OkHttpClientSingleton
-import com.hyejeanmoon.moonunsplash.data.scenes.photos.PhotoRemoteDataSourceImpl
+import com.hyejeanmoon.moonunsplash.data.scenes.photos.*
 import com.hyejeanmoon.moonunsplash.data.scenes.photos.api.service.PhotosApiService
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.PhotosModel
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.datasource.PhotoRemoteDataSource
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.model.PhotosModelImpl
-import com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos.LatestPhotosDataSourceFactory
-import com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos.PhotosDataSource
-import com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos.PopularPhotosDataSourceFactory
 import com.hyejeanmoon.moonunsplash.utils.EnvParameters
 import dagger.Module
 import dagger.Provides
@@ -67,24 +64,49 @@ class ApplicationModule {
     @Provides
     @Singleton
     internal fun providePhotosModel(
-        photoRemoteDataSource: PhotoRemoteDataSource
+        photoRemoteDataSource: PhotoRemoteDataSource,
+        latestPhotosDataSourceFactory: LatestPhotosDataSourceFactory,
+        popularPhotosDataSourceFactory: PopularPhotosDataSourceFactory,
+        oldestPhotosDataSourceFactory: OldestPhotosDataSourceFactory
     ): PhotosModel {
-        return PhotosModelImpl(photoRemoteDataSource)
+        return PhotosModelImpl(
+            photoRemoteDataSource,
+            latestPhotosDataSourceFactory,
+            popularPhotosDataSourceFactory,
+            oldestPhotosDataSourceFactory
+        )
     }
 
     @Provides
     @Singleton
     internal fun providePopularPhotoDataSourceFactory(
-        photosModel: PhotosModel
+        photoRemoteDataSource: PhotoRemoteDataSource
     ): PopularPhotosDataSourceFactory {
-        return PopularPhotosDataSourceFactory(photosModel, PhotosDataSource.MODE_PHOTO_LIST_POPULAR)
+        return PopularPhotosDataSourceFactory(
+            photoRemoteDataSource,
+            PhotosDataSource.MODE_PHOTO_LIST_POPULAR
+        )
     }
 
     @Provides
     @Singleton
     internal fun provideLatestPhotoDataSourceFactory(
-        photosModel: PhotosModel
+        photoRemoteDataSource: PhotoRemoteDataSource
     ): LatestPhotosDataSourceFactory {
-        return LatestPhotosDataSourceFactory(photosModel, PhotosDataSource.MODE_PHOTO_LIST_LATEST)
+        return LatestPhotosDataSourceFactory(
+            photoRemoteDataSource,
+            PhotosDataSource.MODE_PHOTO_LIST_LATEST
+        )
+    }
+
+    @Provides
+    @Singleton
+    internal fun provideOldestPhotoDataSourceFactory(
+        photoRemoteDataSource: PhotoRemoteDataSource
+    ): OldestPhotosDataSourceFactory {
+        return OldestPhotosDataSourceFactory(
+            photoRemoteDataSource,
+            PhotosDataSource.MODE_PHOTO_LIST_LATEST
+        )
     }
 }
