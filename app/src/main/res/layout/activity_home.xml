@@ -9,52 +9,36 @@
         android:layout_height="match_parent"
         tools:context=".presentation.scenes.home.HomeActivity">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appbar"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="?android:actionBarSize"
+            android:background="@color/colorPrimary"
+            app:layout_constraintBottom_toTopOf="@id/nav_fragment"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_scrollFlags="scroll|enterAlways|snap" />
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?android:actionBarSize"
-                app:layout_scrollFlags="scroll|enterAlways|snap" />
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                app:layout_constraintTop_toBottomOf="@id/appbar"
-                app:tabGravity="fill"
-                app:tabMode="fixed">
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/tab_popular_photos" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/tab_latest_photos" />
-
-            </com.google.android.material.tabs.TabLayout>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewpager"
+        <fragment
+            android:id="@+id/nav_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:navGraph="@navigation/nav_home" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            app:itemIconTint="@color/selector_bottom_view"
+            app:itemTextColor="@color/selector_bottom_view"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appbar" />
+            app:layout_constraintTop_toBottomOf="@id/nav_fragment"
+            app:menu="@menu/menu_bottom_view" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

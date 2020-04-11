@@ -5,13 +5,13 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
-import com.google.android.material.tabs.TabLayout
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.hyejeanmoon.moonunsplash.R
 import com.hyejeanmoon.moonunsplash.data.scenes.photos.LatestPhotosFragment
 import com.hyejeanmoon.moonunsplash.databinding.ActivityHomeBinding
 import com.hyejeanmoon.moonunsplash.presentation.BaseActivity
-import com.hyejeanmoon.moonunsplash.presentation.scenes.home.adapter.HomeFragmentPagerAdapter
-import com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos.PopularPhotosFragment
+import com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos.PhotosFragment
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -20,24 +20,16 @@ import kotlinx.android.synthetic.main.activity_home.*
 class HomeActivity : BaseActivity() {
 
     lateinit var binding: ActivityHomeBinding
+    lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
 
+        navController = Navigation.findNavController(this, R.id.nav_fragment)
+
         setStatusBarColor(R.color.colorPrimary, true)
-
-        binding.viewpager.adapter = HomeFragmentPagerAdapter(
-            fragment = arrayListOf(
-                PopularPhotosFragment(),
-                LatestPhotosFragment()
-            ),
-            fragmentManager = supportFragmentManager
-        )
-
-        binding.tabLayout.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(binding.viewpager))
-        binding.viewpager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(binding.tabLayout))
 
         setSupportActionBar(toolbar)
 
@@ -58,6 +50,14 @@ class HomeActivity : BaseActivity() {
         return true
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp()
+    }
+
+    override fun onBackPressed() {
+        finish()
+    }
+
 }
 
 @Module
@@ -66,7 +66,7 @@ abstract class HomeActivityModule {
     abstract fun provideActivity(activity: HomeActivity): FragmentActivity
 
     @ContributesAndroidInjector
-    abstract fun contributePopularPhotosFragment(): PopularPhotosFragment
+    abstract fun contributePopularPhotosFragment(): PhotosFragment
 
     @ContributesAndroidInjector
     abstract fun contributeLatestPhotosFragment(): LatestPhotosFragment

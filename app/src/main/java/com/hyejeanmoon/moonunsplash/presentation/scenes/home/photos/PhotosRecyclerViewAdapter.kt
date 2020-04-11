@@ -1,4 +1,4 @@
-package com.hyejeanmoon.moonunsplash.presentation.scenes.home.adapter
+package com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,14 +12,18 @@ import com.hyejeanmoon.moonunsplash.databinding.ItemPhotoBinding
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity.Photo
 
 class PhotosRecyclerViewAdapter() :
-    PagedListAdapter<Photo, PhotosRecyclerViewAdapter.PhotoAdapterViewHolder>(diffCallback) {
+    PagedListAdapter<Photo, PhotosRecyclerViewAdapter.PhotoAdapterViewHolder>(
+        diffCallback
+    ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoAdapterViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding: ItemPhotoBinding =
             DataBindingUtil.inflate(inflater, R.layout.item_photo, parent, false)
 
-        return PhotoAdapterViewHolder(binding)
+        return PhotoAdapterViewHolder(
+            binding
+        )
     }
 
     override fun onBindViewHolder(holder: PhotoAdapterViewHolder, position: Int) {

@@ -11,15 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hyejeanmoon.moonunsplash.R
 import com.hyejeanmoon.moonunsplash.databinding.FragmentPhotosBinding
 import com.hyejeanmoon.moonunsplash.presentation.BaseFragment
-import com.hyejeanmoon.moonunsplash.presentation.scenes.home.adapter.PhotosRecyclerViewAdapter
 import javax.inject.Inject
 
-/**
- * PopularPhotosFragment
- *
- * The fragment belong to HomeActivity.
- */
-class PopularPhotosFragment : BaseFragment() {
+class PhotosFragment : BaseFragment() {
 
     lateinit var binding: FragmentPhotosBinding
 
@@ -39,7 +33,8 @@ class PopularPhotosFragment : BaseFragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_photos, container, false)
 
-        adapter = PhotosRecyclerViewAdapter()
+        adapter =
+            PhotosRecyclerViewAdapter()
 
         binding.rercyclerView.adapter = adapter
         binding.rercyclerView.layoutManager = LinearLayoutManager(context)

@@ -8,4 +8,11 @@
 
     <!-- Menu-->
     <string name="menu_search">Search</string>
+    <string name="menu_popular">Popular</string>
+    <string name="menu_latest">Latest</string>
+    <string name="menu_oldest">Oldest</string>
+    <string name="menu_photos">Photos</string>
+    <string name="menu_collections">Collections</string>
+    <string name="menu_favourites">Favourites</string>
+    <string name="menu_settings">Settings</string>
 </resources>
