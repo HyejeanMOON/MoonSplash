@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.hyejeanmoon.moonunsplash.R
-import com.hyejeanmoon.moonunsplash.data.scenes.photos.LatestPhotosFragment
 import com.hyejeanmoon.moonunsplash.databinding.ActivityHomeBinding
 import com.hyejeanmoon.moonunsplash.presentation.BaseActivity
 import com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos.PhotosFragment
@@ -60,9 +59,6 @@ abstract class HomeActivityModule {
 
     @ContributesAndroidInjector
     abstract fun contributePopularPhotosFragment(): PhotosFragment
-
-    @ContributesAndroidInjector
-    abstract fun contributeLatestPhotosFragment(): LatestPhotosFragment
 
     @Module
     abstract class Builder {

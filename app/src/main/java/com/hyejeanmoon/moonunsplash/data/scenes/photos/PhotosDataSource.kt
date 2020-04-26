@@ -33,7 +33,7 @@ class PhotosDataSource(
             callback.onResult(
                 photoRemoteDataSource.getPhotos(
                     1,
-                    params.requestedLoadSize / 3,
+                    params.requestedLoadSize,
                     when (mode) {
                         MODE_PHOTO_LIST_LATEST -> ORDER_LATEST
                         MODE_PHOTO_LIST_OLDEST -> ORDER_OLDEST
@@ -43,7 +43,7 @@ class PhotosDataSource(
 
                 ),
                 null,
-                2
+                4
             )
         }
 
