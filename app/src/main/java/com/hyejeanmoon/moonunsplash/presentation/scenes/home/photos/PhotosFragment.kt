@@ -53,15 +53,6 @@ class PhotosFragment : BaseFragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.getPhotoWithPopular().observe(viewLifecycleOwner, Observer {
-            adapter.submitList(it)
-            adapter.notifyDataSetChanged()
-        })
-
-        viewModel.getPhotoWithOldest().observe(viewLifecycleOwner, Observer {
-            adapter.submitList(it)
-            adapter.notifyDataSetChanged()
-        })
 
         viewModel.getPhotoWithLatest().observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)

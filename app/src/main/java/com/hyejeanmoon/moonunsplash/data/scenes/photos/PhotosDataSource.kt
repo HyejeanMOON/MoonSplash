@@ -28,119 +28,58 @@ class PhotosDataSource(
         callback: LoadInitialCallback<Int, Photo>
     ) {
         // Because of the numbers of photo are 3 times [per_page] when first time is loaded. So, we would set next page is 4, not 2.
-        when (mode) {
-            MODE_PHOTO_LIST_LATEST -> {
-                launch {
-                    callback.onResult(
-                        photoRemoteDataSource.getPhotos(1, params.requestedLoadSize, ORDER_LATEST),
-                        null,
-                        4
-                    )
-                }
-            }
-            MODE_PHOTO_LIST_OLDEST -> {
-                launch {
-                    callback.onResult(
-                        photoRemoteDataSource.getPhotos(1, params.requestedLoadSize, ORDER_OLDEST),
-                        null,
-                        4
-                    )
-                }
-            }
-            MODE_PHOTO_LIST_POPULAR -> {
-                launch {
-                    callback.onResult(
-                        photoRemoteDataSource.getPhotos(1, params.requestedLoadSize, ORDER_POPULAR),
-                        null,
-                        4
-                    )
-                }
-            }
-            MODE_PHOTO_LIST_RANDOM -> {
 
-            }
+        launch {
+            callback.onResult(
+                photoRemoteDataSource.getPhotos(
+                    1,
+                    params.requestedLoadSize / 3,
+                    when (mode) {
+                        MODE_PHOTO_LIST_LATEST -> ORDER_LATEST
+                        MODE_PHOTO_LIST_OLDEST -> ORDER_OLDEST
+                        MODE_PHOTO_LIST_POPULAR -> ORDER_POPULAR
+                        else -> ""
+                    }
+
+                ),
+                null,
+                2
+            )
         }
+
     }
 
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Photo>) {
-        when (mode) {
-            MODE_PHOTO_LIST_LATEST -> {
-                launch {
-                    callback.onResult(
-                        photoRemoteDataSource.getPhotos(
-                            params.key,
-                            params.requestedLoadSize,
-                            ORDER_LATEST
-                        ), params.key - 1
-                    )
-                }
-            }
-            MODE_PHOTO_LIST_OLDEST -> {
-                launch {
-                    callback.onResult(
-                        photoRemoteDataSource.getPhotos(
-                            params.key,
-                            params.requestedLoadSize,
-                            ORDER_OLDEST
-                        ), params.key - 1
-                    )
-                }
-            }
-            MODE_PHOTO_LIST_POPULAR -> {
-                launch {
-                    callback.onResult(
-                        photoRemoteDataSource.getPhotos(
-                            params.key,
-                            params.requestedLoadSize,
-                            ORDER_POPULAR
-                        ), params.key - 1
-                    )
-                }
-            }
-            MODE_PHOTO_LIST_RANDOM -> {
-
-            }
+        launch {
+            callback.onResult(
+                photoRemoteDataSource.getPhotos(
+                    params.key,
+                    params.requestedLoadSize,
+                    when (mode) {
+                        MODE_PHOTO_LIST_LATEST -> ORDER_LATEST
+                        MODE_PHOTO_LIST_OLDEST -> ORDER_OLDEST
+                        MODE_PHOTO_LIST_POPULAR -> ORDER_POPULAR
+                        else -> ""
+                    }
+                ), params.key - 1
+            )
         }
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Photo>) {
-        when (mode) {
-            MODE_PHOTO_LIST_LATEST -> {
-                launch {
-                    callback.onResult(
-                        photoRemoteDataSource.getPhotos(
-                            params.key,
-                            params.requestedLoadSize,
-                            ORDER_LATEST
-                        ), params.key + 1
-                    )
-                }
-            }
-            MODE_PHOTO_LIST_OLDEST -> {
-                launch {
-                    callback.onResult(
-                        photoRemoteDataSource.getPhotos(
-                            params.key,
-                            params.requestedLoadSize,
-                            ORDER_OLDEST
-                        ), params.key + 1
-                    )
-                }
-            }
-            MODE_PHOTO_LIST_POPULAR -> {
-                launch {
-                    callback.onResult(
-                        photoRemoteDataSource.getPhotos(
-                            params.key,
-                            params.requestedLoadSize,
-                            ORDER_POPULAR
-                        ), params.key + 1
-                    )
-                }
-            }
-            MODE_PHOTO_LIST_RANDOM -> {
-
-            }
+        launch {
+            callback.onResult(
+                photoRemoteDataSource.getPhotos(
+                    params.key,
+                    params.requestedLoadSize,
+                    when (mode) {
+                        MODE_PHOTO_LIST_LATEST -> ORDER_LATEST
+                        MODE_PHOTO_LIST_OLDEST -> ORDER_OLDEST
+                        MODE_PHOTO_LIST_POPULAR -> ORDER_POPULAR
+                        else -> ""
+                    }
+                ), params.key + 1
+            )
         }
     }
 

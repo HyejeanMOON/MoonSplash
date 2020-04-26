@@ -27,6 +27,7 @@ class ApiEnqueueCallback<T>(
         )
 
         if (response.isSuccessful) {
+            LogUtils.outputLog("response body: ${response.raw()}")
             onSuccess(body)
         } else {
             onError(

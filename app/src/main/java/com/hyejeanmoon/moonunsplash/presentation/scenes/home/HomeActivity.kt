@@ -1,8 +1,6 @@
 package com.hyejeanmoon.moonunsplash.presentation.scenes.home
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
@@ -43,30 +41,6 @@ class HomeActivity : BaseActivity() {
 
         setSupportActionBar(toolbar)
 
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_search, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.menu_search -> {
-
-            }
-            R.id.menu_oldest -> {
-                viewModel.getPhotoWithOldest()
-            }
-            R.id.menu_latest -> {
-                viewModel.getPhotoWithLatest()
-            }
-            R.id.menu_popular -> {
-                viewModel.getPhotoWithPopular()
-            }
-        }
-
-        return true
     }
 
     override fun onSupportNavigateUp(): Boolean {
