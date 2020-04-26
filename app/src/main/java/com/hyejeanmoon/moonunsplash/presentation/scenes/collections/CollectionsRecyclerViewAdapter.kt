@@ -1,4 +1,4 @@
-package com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos
+package com.hyejeanmoon.moonunsplash.presentation.scenes.collections
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,8 +11,8 @@ import com.hyejeanmoon.moonunsplash.R
 import com.hyejeanmoon.moonunsplash.databinding.ItemPhotoBinding
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity.Photo
 
-class PhotosRecyclerViewAdapter :
-    PagedListAdapter<Photo, PhotosRecyclerViewAdapter.PhotoAdapterViewHolder>(
+class CollectionsRecyclerViewAdapter :
+    PagedListAdapter<Photo, CollectionsRecyclerViewAdapter.PhotoAdapterViewHolder>(
         diffCallback
     ) {
 

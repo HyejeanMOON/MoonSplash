@@ -29,7 +29,7 @@ interface PhotosModel {
     /**
      * get a list oof photos from server with oldest order.
      */
-    suspend fun getPhotosWithOldest(): LiveData<PagedList<Photo>>
+    fun getPhotosWithOldest(): LiveData<PagedList<Photo>>
 
     /**
      * get a photo with random without any parameters.

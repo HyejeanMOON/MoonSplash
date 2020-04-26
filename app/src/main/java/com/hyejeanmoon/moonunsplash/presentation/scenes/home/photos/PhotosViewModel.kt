@@ -1,7 +1,6 @@
 package com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.paging.PagedList
@@ -25,12 +24,6 @@ class PhotosViewModel(
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + Job()
 
-    private val _popularPhotos = MutableLiveData<PagedList<Photo>>()
-    val popularPhotos: LiveData<PagedList<Photo>> get() = _popularPhotos
-
-    private val _latestPhotos = MutableLiveData<PagedList<Photo>>()
-    val latestPhotos: LiveData<PagedList<Photo>> get() = _latestPhotos
-
     fun getPhotoWithPopular(): LiveData<PagedList<Photo>> {
         return photosModel.getPhotosWithPopular()
     }
@@ -38,6 +31,14 @@ class PhotosViewModel(
     fun getPhotoWithLatest(): LiveData<PagedList<Photo>> {
         return photosModel.getPhotosWithLatest()
     }
+
+    fun getPhotoWithOldest(): LiveData<PagedList<Photo>> {
+        return photosModel.getPhotosWithOldest()
+    }
+
+//    fun getCollections():LiveData<PagedList<Photo>>{
+//
+//    }
 
     class Factory @Inject constructor(
         private val photosModel: PhotosModel

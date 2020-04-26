@@ -1,7 +1,6 @@
 package com.hyejeanmoon.moonunsplash.data.scenes.photos.api.service
 
 
-import com.hyejeanmoon.moonunsplash.data.scenes.photos.api.entity.CollectionsItem
 import com.hyejeanmoon.moonunsplash.data.scenes.photos.api.entity.PhotoItem
 import retrofit2.Call
 import retrofit2.http.GET
@@ -57,32 +56,5 @@ interface PhotosApiService {
      */
     @GET("/photos/random")
     fun getRandomPhoto(): Call<PhotoItem>
-
-    /**
-     * get a list of photo collections curated.
-     *
-     * param:
-     * page: optional, default 1;
-     * per_page: optional, default 10;
-     */
-    @GET("/collections/curated")
-    fun getCollections(
-        @Query("page") page: Int,
-        @Query("per_page") perPage: Int
-    ): List<CollectionsItem>
-
-    /**
-     * get a photo collection.
-     *
-     * param:
-     * id: The collection’s ID. Required.
-     * page: optional, default 1;
-     * per_page: optional, default 10;
-     */
-    @GET("/collection/@{id}/photos")
-    fun getCollections(
-        @Path("id") id: String,
-        @Query("page") page: Int,
-        @Query("per_page") perPage: Int
-    ): CollectionsItem
+    
 }
