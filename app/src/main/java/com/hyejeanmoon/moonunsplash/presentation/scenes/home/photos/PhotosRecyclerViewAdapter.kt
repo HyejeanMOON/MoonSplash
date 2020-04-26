@@ -43,7 +43,7 @@ class PhotosRecyclerViewAdapter :
             }
 
             override fun areItemsTheSame(oldItem: Photo, newItem: Photo): Boolean {
-                return oldItem.id == newItem.id
+                return oldItem.id === newItem.id
             }
         }
     }

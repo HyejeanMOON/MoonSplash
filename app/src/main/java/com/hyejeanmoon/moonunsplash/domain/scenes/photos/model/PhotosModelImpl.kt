@@ -29,7 +29,8 @@ class PhotosModelImpl(
     override fun getPhotosWithPopular(): LiveData<PagedList<Photo>> {
         return LivePagedListBuilder(
             popularPhotosDataSourceFactory,
-            PagedList.Config.Builder().setPageSize(5).setMaxSize(15).setEnablePlaceholders(true)
+            PagedList.Config.Builder().setPageSize(10).setMaxSize(30).setEnablePlaceholders(true)
+                .setPrefetchDistance(3).setInitialLoadSizeHint(10)
                 .build()
         ).build()
     }
@@ -37,7 +38,8 @@ class PhotosModelImpl(
     override fun getPhotosWithLatest(): LiveData<PagedList<Photo>> {
         return LivePagedListBuilder(
             latestPhotosDataSourceFactory,
-            PagedList.Config.Builder().setPageSize(5).setMaxSize(15).setEnablePlaceholders(true)
+            PagedList.Config.Builder().setPageSize(10).setMaxSize(30).setEnablePlaceholders(true)
+                .setPrefetchDistance(3).setInitialLoadSizeHint(10)
                 .build()
         ).build()
     }
@@ -45,7 +47,8 @@ class PhotosModelImpl(
     override fun getPhotosWithOldest(): LiveData<PagedList<Photo>> {
         return LivePagedListBuilder(
             oldestPhotosDataSourceFactory,
-            PagedList.Config.Builder().setPageSize(5).setMaxSize(15).setEnablePlaceholders(true)
+            PagedList.Config.Builder().setPageSize(10).setMaxSize(30).setEnablePlaceholders(true)
+                .setPrefetchDistance(3).setInitialLoadSizeHint(10)
                 .build()
         ).build()
     }
@@ -70,11 +73,5 @@ class PhotosModelImpl(
             orientation,
             count
         )
-    }
-
-    companion object {
-        private const val ORDER_POPULAR = "popular"
-        private const val ORDER_OLDEST = "oldest"
-        private const val ORDER_LATEST = "latest"
     }
 }

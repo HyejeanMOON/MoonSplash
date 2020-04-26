@@ -56,7 +56,6 @@ class PhotosFragment : BaseFragment() {
 
         viewModel.getPhotoWithLatest().observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
-            adapter.notifyDataSetChanged()
         })
     }
 

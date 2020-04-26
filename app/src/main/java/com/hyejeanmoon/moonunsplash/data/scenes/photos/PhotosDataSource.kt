@@ -43,7 +43,7 @@ class PhotosDataSource(
 
                 ),
                 null,
-                4
+                2
             )
         }
 
