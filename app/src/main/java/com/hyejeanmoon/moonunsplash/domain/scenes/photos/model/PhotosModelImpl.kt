@@ -42,7 +42,7 @@ class PhotosModelImpl(
         ).build()
     }
 
-    override suspend fun getPhotosWithOldest(): LiveData<PagedList<Photo>> {
+    override fun getPhotosWithOldest(): LiveData<PagedList<Photo>> {
         return LivePagedListBuilder(
             oldestPhotosDataSourceFactory,
             PagedList.Config.Builder().setPageSize(5).setMaxSize(15).setEnablePlaceholders(true)

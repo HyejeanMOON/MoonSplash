@@ -5,6 +5,22 @@
     <item
         android:id="@+id/menu_search"
         android:title="@string/menu_search"
+        android:icon="@drawable/ic_icon_search"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menu_popular"
+        android:title="@string/menu_popular"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_oldest"
+        android:title="@string/menu_oldest"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_latest"
+        android:title="@string/menu_latest"
+        app:showAsAction="never" />
 
 </menu>

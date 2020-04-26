@@ -4,8 +4,12 @@ import android.app.Application
 import android.content.Context
 import com.hyejeanmoon.moonunsplash.data.api.retrofit.ApiClientHelper
 import com.hyejeanmoon.moonunsplash.data.api.retrofit.OkHttpClientSingleton
+import com.hyejeanmoon.moonunsplash.data.scenes.collections.CollectionRemoteDataSourceImpl
+import com.hyejeanmoon.moonunsplash.data.scenes.collections.CollectionsDataSourceFactory
+import com.hyejeanmoon.moonunsplash.data.scenes.collections.service.CollectionsApiService
 import com.hyejeanmoon.moonunsplash.data.scenes.photos.*
 import com.hyejeanmoon.moonunsplash.data.scenes.photos.api.service.PhotosApiService
+import com.hyejeanmoon.moonunsplash.domain.scenes.collections.datasource.CollectionsRemoteDataSource
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.PhotosModel
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.datasource.PhotoRemoteDataSource
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.model.PhotosModelImpl
@@ -106,7 +110,23 @@ class ApplicationModule {
     ): OldestPhotosDataSourceFactory {
         return OldestPhotosDataSourceFactory(
             photoRemoteDataSource,
-            PhotosDataSource.MODE_PHOTO_LIST_LATEST
+            PhotosDataSource.MODE_PHOTO_LIST_OLDEST
         )
+    }
+
+    @Provides
+    @Singleton
+    internal fun provideCollectionsDataSourceFactory(
+        collectionsRemoteDataSource: CollectionsRemoteDataSource
+    ): CollectionsDataSourceFactory {
+        return CollectionsDataSourceFactory(collectionsRemoteDataSource)
+    }
+
+    @Provides
+    @Singleton
+    internal fun provideCollectionsRemoteDataSource(
+        collectionsApiService: CollectionsApiService
+    ): CollectionsRemoteDataSource {
+        return CollectionRemoteDataSourceImpl(collectionsApiService)
     }
 }

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hyejeanmoon.moonunsplash.R
 import com.hyejeanmoon.moonunsplash.databinding.FragmentPhotosBinding
 import com.hyejeanmoon.moonunsplash.presentation.BaseFragment
-import com.hyejeanmoon.moonunsplash.presentation.scenes.home.adapter.PhotosRecyclerViewAdapter
+import com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos.PhotosRecyclerViewAdapter
 import com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos.PhotosViewModel
 import javax.inject.Inject
 
@@ -40,7 +40,8 @@ class LatestPhotosFragment : BaseFragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_photos, container, false)
 
-        adapter = PhotosRecyclerViewAdapter()
+        adapter =
+            PhotosRecyclerViewAdapter()
 
         binding.rercyclerView.adapter = adapter
         binding.rercyclerView.layoutManager = LinearLayoutManager(context)
