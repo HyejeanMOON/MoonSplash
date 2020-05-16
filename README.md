@@ -1,6 +1,7 @@
 # MoonSplash
 There is a wallpaper android app by Unsplash.
 
+## Informations
 Architecture: MVVM  
 Language: Kotlin
 
@@ -18,4 +19,9 @@ Using libraries as below:
 11. Lottie
 12. Timber
 13. Glide
+
+## Screenshot
 <img width="270" height="585" src="https://github.com/HyejeanMOON/MoonSplash/blob/master/Screenshot_2020-05-17-00-26-17-939_com.hyejeanmoon.wallpaperbyunsplash.jpg"/>
+
+## Others
+The app development is to be continue.
