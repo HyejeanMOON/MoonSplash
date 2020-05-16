@@ -14,4 +14,7 @@ Using liblaries as below:
 7. Android JetPack: LiveData
 8. Android JetPack: Paging
 9. Android JetPack: LifeCycle
-10. Lottie
+10. Android JetPack: Navigation
+11. Lottie
+12. Timber
+13. Glide
