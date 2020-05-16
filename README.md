@@ -1,7 +1,10 @@
 # MoonSplash
-There is a wallpaper android app by Unsplash.
 
 ## Informations
+
+There is a wallpaper android app by Unsplash.  
+You can easily set picture to wallpaper on your phone.
+
 Architecture: MVVM  
 Language: Kotlin
 
