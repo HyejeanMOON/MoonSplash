@@ -4,7 +4,7 @@ There is a wallpaper android app by Unsplash.
 Architecture: MVVM  
 Language: Kotlin
 
-Using liblaries as below:
+Using libraries as below:
 1. Dagger
 2. Okhttp
 3. Retrofit
