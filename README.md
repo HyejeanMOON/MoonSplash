@@ -1,5 +1,8 @@
 # MoonSplash
-There is an wallpaper android app by Unsplash
+There is a wallpaper android app by Unsplash.
+
+Architecture: MVVM  
+Language: Kotlin
 
 Using liblaries as below:
 1. Dagger
