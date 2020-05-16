@@ -20,8 +20,7 @@ Using libraries as below:
 9. Android JetPack: LifeCycle
 10. Android JetPack: Navigation
 11. Lottie
-12. Timber
-13. Glide
+12. Glide
 
 ## Screenshot
 The application is developing. The screenshot maybe is not the newest layout of application.
