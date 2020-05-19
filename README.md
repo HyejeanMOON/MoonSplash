@@ -12,7 +12,7 @@ Using libraries as below:
 1. Dagger
 2. Okhttp
 3. Retrofit
-4. Goson
+4. Gson
 5. Kotlin Coroutines
 6. Android JetPack: ViewModel
 7. Android JetPack: LiveData
