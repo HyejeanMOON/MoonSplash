@@ -1,4 +1,4 @@
-package com.hyejeanmoon.moonunsplash.DI
+package com.hyejeanmoon.moonunsplash.di
 
 import javax.inject.Qualifier
 

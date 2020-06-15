@@ -1,6 +1,6 @@
 package com.hyejeanmoon
 
-import com.hyejeanmoon.moonunsplash.DI.createApplicationComponent
+import com.hyejeanmoon.moonunsplash.di.createApplicationComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 

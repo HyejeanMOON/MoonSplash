@@ -1,4 +1,4 @@
-package com.hyejeanmoon.moonunsplash.DI
+package com.hyejeanmoon.moonunsplash.di
 
 import android.app.Application
 import com.hyejeanmoon.AndroidApplication
