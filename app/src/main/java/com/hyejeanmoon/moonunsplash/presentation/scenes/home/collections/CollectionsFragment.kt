@@ -1,4 +1,4 @@
-package com.hyejeanmoon.moonunsplash.presentation.scenes.collections
+package com.hyejeanmoon.moonunsplash.presentation.scenes.home.collections
 
 import android.os.Bundle
 import android.view.LayoutInflater

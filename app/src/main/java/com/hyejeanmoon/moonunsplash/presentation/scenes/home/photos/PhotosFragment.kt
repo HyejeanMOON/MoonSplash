@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hyejeanmoon.moonunsplash.R
 import com.hyejeanmoon.moonunsplash.databinding.FragmentPhotosBinding
 import com.hyejeanmoon.moonunsplash.presentation.BaseFragment
+import com.hyejeanmoon.moonunsplash.presentation.scenes.home.PhotosViewModel
 import javax.inject.Inject
 
 class PhotosFragment : BaseFragment() {

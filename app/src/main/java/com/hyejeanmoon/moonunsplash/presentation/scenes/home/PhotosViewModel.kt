@@ -1,4 +1,4 @@
-package com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos
+package com.hyejeanmoon.moonunsplash.presentation.scenes.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

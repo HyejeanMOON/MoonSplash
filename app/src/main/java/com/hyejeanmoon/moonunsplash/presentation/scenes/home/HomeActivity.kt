@@ -10,7 +10,6 @@ import com.hyejeanmoon.moonunsplash.R
 import com.hyejeanmoon.moonunsplash.databinding.ActivityHomeBinding
 import com.hyejeanmoon.moonunsplash.presentation.BaseActivity
 import com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos.PhotosFragment
-import com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos.PhotosViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
