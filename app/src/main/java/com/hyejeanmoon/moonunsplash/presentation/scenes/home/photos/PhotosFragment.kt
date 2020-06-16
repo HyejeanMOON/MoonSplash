@@ -41,6 +41,11 @@ class PhotosFragment : BaseFragment() {
 
         viewModel.getPhotoWithLatest()
 
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            viewModel.getPhotoWithLatest()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
+
         return binding.root
 
     }
