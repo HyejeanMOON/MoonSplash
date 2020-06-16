@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.hyejeanmoon.moonunsplash.R
-import com.hyejeanmoon.moonunsplash.databinding.ItemPhotoBinding
+import com.hyejeanmoon.moonunsplash.databinding.ItemCollectionBinding
 import com.hyejeanmoon.moonunsplash.domain.scenes.collections.entity.Collections
 
 class CollectionsRecyclerViewAdapter :
@@ -18,8 +18,8 @@ class CollectionsRecyclerViewAdapter :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionAdapterViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding: ItemPhotoBinding =
-            DataBindingUtil.inflate(inflater, R.layout.item_photo, parent, false)
+        val binding: ItemCollectionBinding =
+            DataBindingUtil.inflate(inflater, R.layout.item_collection, parent, false)
 
         return CollectionAdapterViewHolder(
             binding
@@ -30,10 +30,11 @@ class CollectionsRecyclerViewAdapter :
         getItem(position)?.also {
             Glide.with(holder.binding.imgViewPhoto).load(it.coverPhoto?.urls?.regular)
                 .into(holder.binding.imgViewPhoto)
+            holder.binding.textViewName.text = it.title
         }
     }
 
-    class CollectionAdapterViewHolder(var binding: ItemPhotoBinding) :
+    class CollectionAdapterViewHolder(var binding: ItemCollectionBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     companion object {
