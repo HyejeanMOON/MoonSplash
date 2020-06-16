@@ -1,6 +1,6 @@
-package com.hyejeanmoon.moonunsplash.data.scenes.collections.service
+package com.hyejeanmoon.moonunsplash.data.scenes.collections.api.service
 
-import com.hyejeanmoon.moonunsplash.data.scenes.photos.api.entity.CollectionsItem
+import com.hyejeanmoon.moonunsplash.data.scenes.collections.api.entity.CollectionsItem
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -14,14 +14,14 @@ interface CollectionsApiService {
      * page: optional, default 1;
      * per_page: optional, default 10;
      */
-    @GET("/collections/curated")
+    @GET("/collections")
     fun getCollections(
         @Query("page") page: Int,
         @Query("per_page") perPage: Int
     ): Call<List<CollectionsItem>>
 
     /**
-     * get a photo collection.
+     * get a photo collection by id.
      *
      * param:
      * id: The collection’s ID. Required.

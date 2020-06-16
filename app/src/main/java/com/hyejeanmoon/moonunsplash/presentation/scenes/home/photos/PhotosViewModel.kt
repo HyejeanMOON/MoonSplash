@@ -1,4 +1,4 @@
-package com.hyejeanmoon.moonunsplash.presentation.scenes.home
+package com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -35,10 +35,6 @@ class PhotosViewModel(
     fun getPhotoWithOldest(): LiveData<PagedList<Photo>> {
         return photosModel.getPhotosWithOldest()
     }
-
-//    fun getCollections():LiveData<PagedList<Photo>>{
-//
-//    }
 
     class Factory @Inject constructor(
         private val photosModel: PhotosModel

@@ -1,4 +1,4 @@
-package com.hyejeanmoon.moonunsplash.DI
+package com.hyejeanmoon.moonunsplash.di
 
 import android.app.Application
 import android.content.Context
@@ -6,10 +6,12 @@ import com.hyejeanmoon.moonunsplash.data.api.retrofit.ApiClientHelper
 import com.hyejeanmoon.moonunsplash.data.api.retrofit.OkHttpClientSingleton
 import com.hyejeanmoon.moonunsplash.data.scenes.collections.CollectionRemoteDataSourceImpl
 import com.hyejeanmoon.moonunsplash.data.scenes.collections.CollectionsDataSourceFactory
-import com.hyejeanmoon.moonunsplash.data.scenes.collections.service.CollectionsApiService
+import com.hyejeanmoon.moonunsplash.data.scenes.collections.api.service.CollectionsApiService
 import com.hyejeanmoon.moonunsplash.data.scenes.photos.*
 import com.hyejeanmoon.moonunsplash.data.scenes.photos.api.service.PhotosApiService
+import com.hyejeanmoon.moonunsplash.domain.scenes.collections.CollectionsModel
 import com.hyejeanmoon.moonunsplash.domain.scenes.collections.datasource.CollectionsRemoteDataSource
+import com.hyejeanmoon.moonunsplash.domain.scenes.collections.model.CollectionsModelImpl
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.PhotosModel
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.datasource.PhotoRemoteDataSource
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.model.PhotosModelImpl
@@ -128,5 +130,28 @@ class ApplicationModule {
         collectionsApiService: CollectionsApiService
     ): CollectionsRemoteDataSource {
         return CollectionRemoteDataSourceImpl(collectionsApiService)
+    }
+
+    @Provides
+    @Singleton
+    internal fun provideCollectionsModel(
+        collectionRemoteDataSource: CollectionsRemoteDataSource,
+        collectionsDataSourceFactory: CollectionsDataSourceFactory
+    ): CollectionsModel {
+        return CollectionsModelImpl(
+            collectionRemoteDataSource,
+            collectionsDataSourceFactory
+        )
+    }
+
+    @Provides
+    @Singleton
+    internal fun provideCollectionsApiService(
+        apiClientHelper: ApiClientHelper
+    ): CollectionsApiService {
+        return ApiClientHelper.createCollectionsApiService(
+            apiClientHelper.baseUrl,
+            OkHttpClientSingleton().plainOkHttpClient
+        )
     }
 }

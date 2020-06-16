@@ -7,7 +7,7 @@ import com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity.Photo
 /**
  * PhotosModel
  *
- * It's interface of photos model.
+ * interface of photos model.
  */
 interface PhotosModel {
 

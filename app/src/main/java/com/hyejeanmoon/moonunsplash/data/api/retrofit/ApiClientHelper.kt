@@ -1,5 +1,6 @@
 package com.hyejeanmoon.moonunsplash.data.api.retrofit
 
+import com.hyejeanmoon.moonunsplash.data.scenes.collections.api.service.CollectionsApiService
 import com.hyejeanmoon.moonunsplash.data.scenes.photos.api.service.PhotosApiService
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -29,6 +30,20 @@ class ApiClientHelper constructor(
                 .build()
 
             return retrofit.create(PhotosApiService::class.java)
+        }
+
+        fun createCollectionsApiService(
+            baseUrl: String,
+            okHttpClient: OkHttpClient
+        ): CollectionsApiService {
+            val retrofit = Retrofit
+                .Builder()
+                .baseUrl(baseUrl)
+                .client(okHttpClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
+            return retrofit.create(CollectionsApiService::class.java)
         }
     }
 }

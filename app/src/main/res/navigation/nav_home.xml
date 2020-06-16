@@ -11,5 +11,10 @@
         android:label="photosFragment"
         tools:layout="@layout/fragment_photos" />
 
+    <fragment
+        android:id="@+id/collectionsFragment"
+        android:name="com.hyejeanmoon.moonunsplash.presentation.scenes.home.collections.CollectionsFragment"
+        android:label="collectionsFragment"
+        tools:layout="@layout/fragment_collections" />
 
 </navigation>

@@ -1,12 +1,14 @@
-package com.hyejeanmoon.moonunsplash.data.scenes.photos.api.entity
+package com.hyejeanmoon.moonunsplash.data.scenes.collections.api.entity
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity.Collections
-import com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity.Links
-import com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity.User
+import com.hyejeanmoon.moonunsplash.data.scenes.photos.api.entity.CoverPhotoItem
+import com.hyejeanmoon.moonunsplash.data.scenes.photos.api.entity.LinksItem
+import com.hyejeanmoon.moonunsplash.data.scenes.photos.api.entity.UserItem
+import com.hyejeanmoon.moonunsplash.domain.scenes.collections.entity.Collections
 
-class CollectionsItem : Collections {
+class CollectionsItem :
+    Collections {
 
     @Expose
     @SerializedName("id")
@@ -50,9 +52,9 @@ class CollectionsItem : Collections {
 
     @Expose
     @SerializedName("user")
-    override val user: User? = null
+    override val user: UserItem? = null
 
     @Expose
     @SerializedName("links")
-    override val links: Links? = null
+    override val links: LinksItem? = null
 }

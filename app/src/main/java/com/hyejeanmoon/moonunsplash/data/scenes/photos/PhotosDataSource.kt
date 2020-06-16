@@ -27,8 +27,7 @@ class PhotosDataSource(
         params: LoadInitialParams<Int>,
         callback: LoadInitialCallback<Int, Photo>
     ) {
-        // Because of the numbers of photo are 3 times [per_page] when first time is loaded. So, we would set next page is 4, not 2.
-
+        // Because of the numbers of photo are 3 times [per_page] when first time. So, we would set next page is 4, not 2.
         launch {
             callback.onResult(
                 photoRemoteDataSource.getPhotos(

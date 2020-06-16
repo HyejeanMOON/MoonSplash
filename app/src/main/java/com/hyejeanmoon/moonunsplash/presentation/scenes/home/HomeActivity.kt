@@ -9,7 +9,9 @@ import androidx.navigation.Navigation
 import com.hyejeanmoon.moonunsplash.R
 import com.hyejeanmoon.moonunsplash.databinding.ActivityHomeBinding
 import com.hyejeanmoon.moonunsplash.presentation.BaseActivity
+import com.hyejeanmoon.moonunsplash.presentation.scenes.home.collections.CollectionsFragment
 import com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos.PhotosFragment
+import com.hyejeanmoon.moonunsplash.presentation.scenes.home.photos.PhotosViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -39,6 +41,20 @@ class HomeActivity : BaseActivity() {
 
         setSupportActionBar(toolbar)
 
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.menu_photos -> {
+                    navController.navigate(R.id.photosFragment)
+                }
+                R.id.menu_collections -> {
+                    navController.navigate(R.id.collectionsFragment)
+                }
+                else -> {
+                }
+            }
+            true
+        }
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -57,7 +73,10 @@ abstract class HomeActivityModule {
     abstract fun provideActivity(activity: HomeActivity): FragmentActivity
 
     @ContributesAndroidInjector
-    abstract fun contributePopularPhotosFragment(): PhotosFragment
+    abstract fun contributePhotosFragment(): PhotosFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeCollectionsFragment(): CollectionsFragment
 
     @Module
     abstract class Builder {

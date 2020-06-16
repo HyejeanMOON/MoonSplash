@@ -1,4 +1,8 @@
-package com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity
+package com.hyejeanmoon.moonunsplash.domain.scenes.collections.entity
+
+import com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity.CoverPhoto
+import com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity.Links
+import com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity.User
 
 interface Collections {
     val id: String?

@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hyejeanmoon.moonunsplash.R
 import com.hyejeanmoon.moonunsplash.databinding.FragmentPhotosBinding
 import com.hyejeanmoon.moonunsplash.presentation.BaseFragment
-import com.hyejeanmoon.moonunsplash.presentation.scenes.home.PhotosViewModel
 import javax.inject.Inject
 
 class PhotosFragment : BaseFragment() {
@@ -21,7 +20,7 @@ class PhotosFragment : BaseFragment() {
     @Inject
     lateinit var viewModelFactory: PhotosViewModel.Factory
     private val viewModel: PhotosViewModel by lazy {
-        ViewModelProviders.of(requireActivity(), viewModelFactory)
+        ViewModelProviders.of(this, viewModelFactory)
             .get(PhotosViewModel::class.java)
     }
 
@@ -40,7 +39,7 @@ class PhotosFragment : BaseFragment() {
         binding.rercyclerView.adapter = adapter
         binding.rercyclerView.layoutManager = LinearLayoutManager(context)
 
-        viewModel.getPhotoWithPopular()
+        viewModel.getPhotoWithLatest()
 
         return binding.root
 
