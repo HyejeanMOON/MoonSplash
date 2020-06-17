@@ -15,4 +15,7 @@
     <string name="menu_collections">Collections</string>
     <string name="menu_favourites">Favourites</string>
     <string name="menu_settings">Settings</string>
+
+    <!-- Collections-->
+    <string name="collections_numbers">photos</string>
 </resources>

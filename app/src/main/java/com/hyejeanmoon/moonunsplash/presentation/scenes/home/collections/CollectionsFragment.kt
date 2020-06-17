@@ -37,6 +37,11 @@ class CollectionsFragment : BaseFragment() {
 
         viewModel.getCollections()
 
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            viewModel.getCollections()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
+
         return binding.root
     }
 

@@ -31,6 +31,7 @@ class CollectionsRecyclerViewAdapter :
             Glide.with(holder.binding.imgViewPhoto).load(it.coverPhoto?.urls?.regular)
                 .into(holder.binding.imgViewPhoto)
             holder.binding.textViewName.text = it.title
+            holder.binding.textViewNumber.text = it.totalPhotos.toString()
         }
     }
 
