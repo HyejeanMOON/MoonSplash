@@ -24,5 +24,5 @@ Using libraries are as below:
 
 ## Screenshot
 The application is developing. The screenshot maybe is not the newest layout of application.
-<img width="270" height="585" src="https://github.com/HyejeanMOON/MoonSplash/blob/master/Screenshot_2020-05-17-00-26-17-939_com.hyejeanmoon.wallpaperbyunsplash.jpg"/>
+<img width="270" height="585" src="https://github.com/HyejeanMOON/MoonSplash/blob/master/Screenshot_2020-06-17-23-31-15-244_com.hyejeanmoon.wallpaperbyunsplash.jpg"/><img width="270" height="585" src="https://github.com/HyejeanMOON/MoonSplash/blob/master/Screenshot_2020-06-17-23-31-29-156_com.hyejeanmoon.wallpaperbyunsplash.jpg"/>
 
