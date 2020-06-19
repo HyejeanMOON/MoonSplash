@@ -1,6 +1,8 @@
 package com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity
 
-interface Exif {
+import java.io.Serializable
+
+interface Exif : Serializable {
     val make: String?
     val model: String?
     val exposureTime: String?

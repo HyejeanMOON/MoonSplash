@@ -11,7 +11,9 @@ import com.hyejeanmoon.moonunsplash.R
 import com.hyejeanmoon.moonunsplash.databinding.ItemPhotoBinding
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity.Photo
 
-class PhotosRecyclerViewAdapter :
+class PhotosRecyclerViewAdapter(
+    val callback: (Photo) -> Unit
+) :
     PagedListAdapter<Photo, PhotosRecyclerViewAdapter.PhotoAdapterViewHolder>(
         diffCallback
     ) {
@@ -27,9 +29,13 @@ class PhotosRecyclerViewAdapter :
     }
 
     override fun onBindViewHolder(holder: PhotoAdapterViewHolder, position: Int) {
-        getItem(position)?.also {
-            Glide.with(holder.binding.imgViewPhoto).load(it.urls?.regular)
+        getItem(position)?.also { photo ->
+            Glide.with(holder.binding.imgViewPhoto).load(photo.urls?.regular)
                 .into(holder.binding.imgViewPhoto)
+
+            holder.binding.imgViewPhoto.setOnClickListener {
+                callback(photo)
+            }
         }
     }
 

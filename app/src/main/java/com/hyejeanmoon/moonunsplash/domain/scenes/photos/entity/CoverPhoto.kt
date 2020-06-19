@@ -1,6 +1,8 @@
 package com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity
 
-interface CoverPhoto {
+import java.io.Serializable
+
+interface CoverPhoto : Serializable {
     val id: String?
     val width: Int?
     val height: Int?

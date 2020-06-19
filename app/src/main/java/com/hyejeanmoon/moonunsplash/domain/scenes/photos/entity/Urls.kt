@@ -1,6 +1,8 @@
 package com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity
 
-interface Urls {
+import java.io.Serializable
+
+interface Urls : Serializable {
     val url: String?
     val raw: String?
     val full: String?

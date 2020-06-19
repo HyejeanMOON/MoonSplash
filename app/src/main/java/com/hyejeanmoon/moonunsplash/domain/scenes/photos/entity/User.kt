@@ -1,6 +1,8 @@
 package com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity
 
-interface User {
+import java.io.Serializable
+
+interface User : Serializable {
     val id: String?
     val updatedAt: String?
     val userName: String?

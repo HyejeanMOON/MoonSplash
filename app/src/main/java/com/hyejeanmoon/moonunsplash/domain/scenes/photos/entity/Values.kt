@@ -1,6 +1,8 @@
 package com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity
 
-interface Values {
+import java.io.Serializable
+
+interface Values : Serializable {
     val date: String?
     val value: Int?
 }

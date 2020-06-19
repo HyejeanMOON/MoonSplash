@@ -1,6 +1,8 @@
 package com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity
 
-interface Historical {
+import java.io.Serializable
+
+interface Historical : Serializable {
     val change: Int?
     val average: Int?
     val resolution: String?

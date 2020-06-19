@@ -10,12 +10,14 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hyejeanmoon.moonunsplash.R
 import com.hyejeanmoon.moonunsplash.databinding.FragmentPhotosBinding
+import com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity.Photo
 import com.hyejeanmoon.moonunsplash.presentation.BaseFragment
+import com.hyejeanmoon.moonunsplash.presentation.scenes.photo.PhotoActivity
 import javax.inject.Inject
 
 class PhotosFragment : BaseFragment() {
 
-    lateinit var binding: FragmentPhotosBinding
+    private lateinit var binding: FragmentPhotosBinding
 
     @Inject
     lateinit var viewModelFactory: PhotosViewModel.Factory
@@ -34,7 +36,7 @@ class PhotosFragment : BaseFragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_photos, container, false)
 
         adapter =
-            PhotosRecyclerViewAdapter()
+            PhotosRecyclerViewAdapter(::startActivity)
 
         binding.rercyclerView.adapter = adapter
         binding.rercyclerView.layoutManager = LinearLayoutManager(context)
@@ -48,6 +50,12 @@ class PhotosFragment : BaseFragment() {
 
         return binding.root
 
+    }
+
+    private fun startActivity(photo: Photo) {
+        activity?.also {
+            PhotoActivity.start(it, photo)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

@@ -1,6 +1,8 @@
 package com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity
 
-interface Position {
+import java.io.Serializable
+
+interface Position : Serializable {
     val latitude: Double?
     val longitude: Double?
 }

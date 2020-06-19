@@ -3,6 +3,7 @@ package com.hyejeanmoon.moonunsplash.di
 import android.app.Application
 import com.hyejeanmoon.AndroidApplication
 import com.hyejeanmoon.moonunsplash.presentation.scenes.home.HomeActivityModule
+import com.hyejeanmoon.moonunsplash.presentation.scenes.photo.PhotoActivityModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -16,7 +17,8 @@ import javax.inject.Singleton
         AndroidInjectionModule::class,
         AndroidSupportInjectionModule::class,
         HomeActivityModule.Builder::class,
-        ApplicationModule::class
+        ApplicationModule::class,
+        PhotoActivityModule.Builder::class
     ]
 )
 interface ApplicationComponent : AndroidInjector<AndroidApplication> {

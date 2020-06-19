@@ -1,6 +1,8 @@
 package com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity
 
-interface Links {
+import java.io.Serializable
+
+interface Links : Serializable {
     val self: String?
     val html: String?
     val download: String?

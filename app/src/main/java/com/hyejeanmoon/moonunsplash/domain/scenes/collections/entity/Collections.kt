@@ -3,8 +3,9 @@ package com.hyejeanmoon.moonunsplash.domain.scenes.collections.entity
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity.CoverPhoto
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity.Links
 import com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity.User
+import java.io.Serializable
 
-interface Collections {
+interface Collections : Serializable {
     val id: String?
     val title: String?
     val description: String?

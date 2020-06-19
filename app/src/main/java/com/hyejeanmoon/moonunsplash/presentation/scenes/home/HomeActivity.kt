@@ -20,8 +20,8 @@ import javax.inject.Inject
 
 class HomeActivity : BaseActivity() {
 
-    lateinit var binding: ActivityHomeBinding
-    lateinit var navController: NavController
+    private lateinit var binding: ActivityHomeBinding
+    private lateinit var navController: NavController
 
     @Inject
     lateinit var viewModelFactory: PhotosViewModel.Factory

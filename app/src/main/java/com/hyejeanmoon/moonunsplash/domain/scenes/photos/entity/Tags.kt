@@ -1,5 +1,7 @@
 package com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity
 
-interface Tags {
+import java.io.Serializable
+
+interface Tags : Serializable {
     val title: String?
 }

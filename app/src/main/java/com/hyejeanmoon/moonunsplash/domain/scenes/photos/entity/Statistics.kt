@@ -1,6 +1,8 @@
 package com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity
 
-interface Statistics {
+import java.io.Serializable
+
+interface Statistics : Serializable {
     val userName: String?
     val downloads: Downloads?
     val views: Views?

@@ -24,6 +24,7 @@
         </activity>
 
         <activity android:name="com.hyejeanmoon.moonunsplash.presentation.BaseActivity" />
+        <activity android:name=".presentation.scenes.photo.PhotoActivity" />
     </application>
 
 </manifest>

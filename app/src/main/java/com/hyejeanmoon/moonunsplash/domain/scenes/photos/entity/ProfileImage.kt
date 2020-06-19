@@ -1,6 +1,8 @@
 package com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity
 
-interface ProfileImage {
+import java.io.Serializable
+
+interface ProfileImage : Serializable {
     val small: String?
     val medium: String?
     val large: String?

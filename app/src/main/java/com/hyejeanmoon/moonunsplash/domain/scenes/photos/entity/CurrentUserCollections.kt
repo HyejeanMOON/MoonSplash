@@ -1,6 +1,8 @@
 package com.hyejeanmoon.moonunsplash.domain.scenes.photos.entity
 
-interface CurrentUserCollections {
+import java.io.Serializable
+
+interface CurrentUserCollections : Serializable {
     val id: Int?
     val title: String?
     val publishedAt: String?
