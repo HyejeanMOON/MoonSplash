@@ -44,10 +44,14 @@ class HomeActivity : BaseActivity() {
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_photos -> {
-                    navController.navigate(R.id.photosFragment)
+                    if (navController.currentDestination?.id != R.id.photosFragment) {
+                        navController.navigate(R.id.photosFragment)
+                    }
                 }
                 R.id.menu_collections -> {
-                    navController.navigate(R.id.collectionsFragment)
+                    if (navController.currentDestination?.id != R.id.collectionsFragment) {
+                        navController.navigate(R.id.collectionsFragment)
+                    }
                 }
                 else -> {
                 }
