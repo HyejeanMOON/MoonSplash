@@ -38,8 +38,8 @@ class PhotosFragment : BaseFragment() {
         adapter =
             PhotosRecyclerViewAdapter(::startActivity)
 
-        binding.rercyclerView.adapter = adapter
-        binding.rercyclerView.layoutManager = LinearLayoutManager(context)
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
 
         viewModel.getPhotoWithLatest()
 
