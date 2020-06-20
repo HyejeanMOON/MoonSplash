@@ -9,7 +9,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.hyejeanmoon.moonunsplash.R
 import com.hyejeanmoon.moonunsplash.databinding.FragmentCollectionsBinding
+import com.hyejeanmoon.moonunsplash.domain.scenes.collections.entity.Collections
 import com.hyejeanmoon.moonunsplash.presentation.BaseFragment
+import com.hyejeanmoon.moonunsplash.presentation.scenes.photolist.PhotoListActivity
 import javax.inject.Inject
 
 class CollectionsFragment : BaseFragment() {
@@ -32,7 +34,7 @@ class CollectionsFragment : BaseFragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_collections, container, false)
 
-        collectionsRecyclerViewAdapter = CollectionsRecyclerViewAdapter()
+        collectionsRecyclerViewAdapter = CollectionsRecyclerViewAdapter(::navigateToPhotoList)
         binding.recyclerView.adapter = collectionsRecyclerViewAdapter
 
         viewModel.getCollections()
@@ -43,6 +45,12 @@ class CollectionsFragment : BaseFragment() {
         }
 
         return binding.root
+    }
+
+    private fun navigateToPhotoList(collections: Collections) {
+        activity?.also {
+            PhotoListActivity.start(it, collections)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

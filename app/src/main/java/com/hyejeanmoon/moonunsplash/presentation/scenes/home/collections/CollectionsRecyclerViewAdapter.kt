@@ -11,7 +11,9 @@ import com.hyejeanmoon.moonunsplash.R
 import com.hyejeanmoon.moonunsplash.databinding.ItemCollectionBinding
 import com.hyejeanmoon.moonunsplash.domain.scenes.collections.entity.Collections
 
-class CollectionsRecyclerViewAdapter :
+class CollectionsRecyclerViewAdapter(
+    val callback: (Collections) -> Unit
+) :
     PagedListAdapter<Collections, CollectionsRecyclerViewAdapter.CollectionAdapterViewHolder>(
         diffCallback
     ) {
@@ -27,11 +29,14 @@ class CollectionsRecyclerViewAdapter :
     }
 
     override fun onBindViewHolder(holder: CollectionAdapterViewHolder, position: Int) {
-        getItem(position)?.also {
-            Glide.with(holder.binding.imgViewPhoto).load(it.coverPhoto?.urls?.regular)
+        getItem(position)?.also { collections ->
+            Glide.with(holder.binding.imgViewPhoto).load(collections.coverPhoto?.urls?.regular)
                 .into(holder.binding.imgViewPhoto)
-            holder.binding.textViewName.text = it.title
-            holder.binding.textViewNumber.text = it.totalPhotos.toString()
+            holder.binding.textViewName.text = collections.title
+            holder.binding.textViewNumber.text = collections.totalPhotos.toString()
+            holder.binding.root.setOnClickListener {
+                callback(collections)
+            }
         }
     }
 
